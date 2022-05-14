@@ -18,7 +18,10 @@ const Dropdown = ({ visible, onItemChange, setVisible, items }: DropdownProps) =
 
   return (
     <DropdownWrapper>
-      <DropdownList visible={visible ? 'visible' : ''}>
+      <DropdownList
+        data-testid="dropdown"
+        visible={visible ? 'visible' : ''}
+      >
         {items.map(item => (
           <ListItem key={item.id} onClick={() => onItemClick(item.id)}>
             {item.title}

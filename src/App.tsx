@@ -3,10 +3,11 @@ import { Header } from './components/Header/styled';
 import SearchForm from './components/SearchForm';
 
 const App = () => {
-  const [start, setStart] = useState([]);
+
+  const [origin, setOrigin] = useState([]);
   const [destination, setDestination] = useState([]);
 
-  useEffect(() => console.log(start), [start]);
+  useEffect(() => console.log(origin), [origin]);
   useEffect(() => console.log(destination), [destination]);
 
   return (
@@ -15,7 +16,7 @@ const App = () => {
       <SearchForm
         label="From:"
         placeholder="Start point"
-        setResult={setStart}
+        setResult={setOrigin}
       />
       <SearchForm
         label="To:"

@@ -2,8 +2,8 @@ import { useState } from "react";
 import { getGeocode } from "../../utils/getGeocode";
 import Button from "../Button";
 import Input from "../Input";
-import { Space } from "../Space/styled";
 import Dropdown from "./Dropdown";
+import { Space } from "../Space/styled";
 import { SearchFormWrapper, StyledForm } from "./styled";
 
 interface SearchFormProps {
