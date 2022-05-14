@@ -1,7 +1,10 @@
+import { SEARCH_REASULTS_NUMBER } from "../assets/variables";
+
 export const getGeocode = async (query: string) => {
   const geocodeBaseUrl = "https://geocode.search.hereapi.com/v1/geocode";
   const apiKey = process.env.REACT_APP_API_KEY;
-  const url = `${geocodeBaseUrl}?q=${query}&apiKey=${apiKey}`;
+  const number = SEARCH_REASULTS_NUMBER;
+  const url = `${geocodeBaseUrl}?limit=${number}&q=${query}&apiKey=${apiKey}`;
 
   try {
     const response = await fetch(url, {
@@ -14,8 +17,8 @@ export const getGeocode = async (query: string) => {
     }
 
     const data = await response.json();
-    console.log(data?.items[0]);
+    return await data?.items;
   } catch (error) {
-    console.log(error);
+    console.error("Error", error);
   }
 };

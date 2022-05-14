@@ -3,10 +3,13 @@ import { DefaultTheme } from "styled-components";
 export const standard: DefaultTheme = {
   color: {
     primary: '#282c34',
-    secondary: '#B6722F',
     primaryText: '#FFF',
+    secondary: '#B6722F',
     secondaryText: '#CF9F68',
     background: '#383434',
+    oppositeBackground: '#fafafa',
+    oppositeText: '#282c34',
+    selected: '#3FD5BB',
     appBarBackground: 'rgba(182, 114, 47, 0.8)',
     selectButtonBackground: 'rgba(255, 255, 255, 0.06)',
     selectDropdownBackground: '#403B37',

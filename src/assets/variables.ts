@@ -1,0 +1,1 @@
+export const SEARCH_REASULTS_NUMBER = 50;

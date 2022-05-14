@@ -4,10 +4,13 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     color: {
       primary: string,
-      secondary: string,
       primaryText: string,
+      secondary: string,
       secondaryText: string,
       background: string,
+      oppositeBackground: string,
+      oppositeText: string,
+      selected: string,
       appBarBackground: string,
       selectButtonBackground: string,
       selectDropdownBackground: string,
