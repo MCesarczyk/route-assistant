@@ -1,14 +1,16 @@
 import styled, { css } from "styled-components";
 
 interface SpaceProps {
+  width?: string,
   align?: string,
   justify?: string,
-  vertical?: string
+  vertical?: boolean
 }
 
 export const Space = styled.div`
   display: flex;
-  align-items: ${(props: SpaceProps) => props.align};
+  width: ${(props: SpaceProps) => props.width}
+  align-items: ${props => props.align};
   justify-content: ${props => props.justify};
 
   ${({ vertical }) => vertical && css`
