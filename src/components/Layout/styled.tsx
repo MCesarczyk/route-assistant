@@ -35,5 +35,6 @@ export const Footer = styled.footer`
   height: ${FOOTER_HEIGHT}em;
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: ${({ theme }) => theme.color.enlight};
 `
