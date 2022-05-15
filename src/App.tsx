@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Header } from './components/Header/styled';
-import SearchForm from './components/SearchForm';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Footer, Header, Main, Wrapper } from './components/Layout/styled';
+import Headline from './components/Headline';
+import Home from './views/Home';
 
 const App = () => {
-
   const [origin, setOrigin] = useState([]);
   const [destination, setDestination] = useState([]);
 
@@ -11,19 +12,24 @@ const App = () => {
   useEffect(() => console.log(destination), [destination]);
 
   return (
-    <Header>
-      <h1>Route assistant</h1>
-      <SearchForm
-        label="From:"
-        placeholder="Start point"
-        setResult={setOrigin}
-      />
-      <SearchForm
-        label="To:"
-        placeholder="Finish point"
-        setResult={setDestination}
-      />
-    </Header >
+    <Wrapper>
+      <Header>
+        <Headline title="Route assistant" />
+      </Header>
+      <Main>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={
+              <Home
+                setOrigin={setOrigin}
+                setDestination={setDestination}
+              />
+            } />
+          </Routes>
+        </BrowserRouter>
+      </Main>
+      <Footer />
+    </Wrapper >
   );
 }
 

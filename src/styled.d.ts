@@ -11,9 +11,7 @@ declare module 'styled-components' {
       oppositeBackground: string,
       oppositeText: string,
       selected: string,
-      appBarBackground: string,
-      selectButtonBackground: string,
-      selectDropdownBackground: string,
+      appBarBackground: string
       enlight: string
     },
     breakpoint: {

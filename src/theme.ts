@@ -10,9 +10,7 @@ export const standard: DefaultTheme = {
     oppositeBackground: '#fafafa',
     oppositeText: '#282c34',
     selected: '#3FD5BB',
-    appBarBackground: 'rgba(182, 114, 47, 0.8)',
-    selectButtonBackground: 'rgba(255, 255, 255, 0.06)',
-    selectDropdownBackground: '#403B37',
+    appBarBackground: 'rgba(111, 14, 12, 0.5)',
     enlight: 'rgba(255,255,255,0.2)'
   },
   breakpoint: {
