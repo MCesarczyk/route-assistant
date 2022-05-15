@@ -1,18 +1,18 @@
-import { pages } from "../../assets/pages";
 import { NavButton } from "./styled";
 
 interface navProps {
   page: number,
-  setPage: Function
+  setPage: Function,
+  total: number
 }
 
-const Navigation = ({ page, setPage }: navProps) => {
+const Navigation = ({ page, setPage, total }: navProps) => {
   const decreasePage = () => {
     setPage(page > 1 ? page - 1 : 1);
   };
 
   const increasePage = () => {
-    setPage(page < pages.length ? page + 1 : pages.length);
+    setPage(page < total ? page + 1 : total);
   };
 
   return (
@@ -24,7 +24,7 @@ const Navigation = ({ page, setPage }: navProps) => {
         {"<< Back"}
       </NavButton>
       <NavButton
-        disabled={page === pages.length}
+        disabled={page === total}
         onClick={increasePage}
       >
         {"Next >>"}

@@ -52,6 +52,7 @@ const App = () => {
         <Navigation
           page={page}
           setPage={setPage}
+          total={pages.length}
         />
       </Footer>
     </Wrapper >
