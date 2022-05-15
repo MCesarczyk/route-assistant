@@ -1,9 +1,9 @@
-import { SEARCH_REASULTS_NUMBER } from "../assets/variables";
+import { SEARCH_RESULTS_NUMBER } from "../assets/variables";
 
 export const getGeocode = async (query: string) => {
   const geocodeBaseUrl = "https://geocode.search.hereapi.com/v1/geocode";
   const apiKey = process.env.REACT_APP_API_KEY;
-  const number = SEARCH_REASULTS_NUMBER;
+  const number = SEARCH_RESULTS_NUMBER;
   const url = `${geocodeBaseUrl}?limit=${number}&q=${query}&apiKey=${apiKey}`;
 
   try {
