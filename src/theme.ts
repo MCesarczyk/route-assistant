@@ -4,13 +4,13 @@ export const standard: DefaultTheme = {
   color: {
     primary: '#282c34',
     primaryText: '#FFF',
-    secondary: '#B6722F',
+    secondary: 'rgb(111, 14, 12)',
     secondaryText: '#CF9F68',
     background: '#383434',
     oppositeBackground: '#fafafa',
     oppositeText: '#282c34',
     selected: '#3FD5BB',
-    appBarBackground: 'rgba(111, 14, 12, 0.5)',
+    appBarBackground: '#1A4C39',
     enlight: 'rgba(255,255,255,0.2)'
   },
   breakpoint: {
