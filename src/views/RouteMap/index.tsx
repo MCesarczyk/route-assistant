@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Map from "../../components/Map";
 import { Position } from "../../interfaces";
 import { getRoute } from "../../utils/getRoute";
 
@@ -25,7 +26,15 @@ const RouteMap = ({ origin, destination }: RouteProps) => {
     fetchRoute();
   }, []);
 
-  return (<h2>Route map</h2>);
+  return (
+    <>
+      <h2>Route map</h2>
+      <Map
+        origin={origin}
+        destination={destination}
+      />
+    </>
+  );
 };
 
 export default RouteMap;
