@@ -1,6 +1,14 @@
 import { useEffect } from 'react';
-import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
+import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from 'react-leaflet';
+import { icon } from "leaflet";
+import 'leaflet/dist/leaflet.css';
+
+const markerIcon = icon({
+  iconUrl: "/marker-icon.png",
+  iconSize: [24, 32],
+  iconAnchor: [12, 30],
+  popupAnchor: [0, -28]
+})
 
 interface MapProps {
   origin?: any,
@@ -37,10 +45,10 @@ const Map = ({ origin, destination }: MapProps) => {
               [destination.lat, destination.lng],
             ]}
           />
-          <Marker position={[origin.lat, origin.lng]}>
+          <Marker icon={markerIcon} position={[origin.lat, origin.lng]}>
             <Popup>Start</Popup>
           </Marker>
-          <Marker position={[destination.lat, destination.lng]}>
+          <Marker icon={markerIcon} position={[destination.lat, destination.lng]}>
             <Popup>
               End
             </Popup>
