@@ -5,8 +5,8 @@ import Headline from './components/Headline';
 import Home from './views/Home';
 import Navigation from './components/Navigation';
 import RouteMap from './views/RouteMap';
-import { Location } from './interfaces';
-import { pages } from './assets/pages';
+import { Location } from './common/interfaces';
+import { pages } from './common/pages';
 
 const App = () => {
   const [page, setPage] = useState(1);

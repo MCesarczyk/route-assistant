@@ -1,4 +1,4 @@
-import { Position } from "../interfaces";
+import { Position } from "../common/interfaces";
 
 export const buildGetRouteUrl = (
   routerBaseUrl: string,

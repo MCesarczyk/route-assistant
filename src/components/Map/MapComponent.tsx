@@ -1,55 +1,28 @@
-import React from "react";
-import { Map, TileLayer } from "react-leaflet";
-import Routing from "./RoutingMachine";
+import { MapContainer, TileLayer } from "react-leaflet";
+import { RouteProps } from "../../common/interfaces";
+import RoutingMachine from "./RoutingMachine";
 
-interface mapState {
-  lat: number,
-  lng: number,
-  zoom: number,
-  isMapInit: boolean
-};
-
-class MapComponent extends React.Component<any, mapState> {
-  constructor() {
-    //@ts-ignore
-    super();
-    this.state = {
-      lat: 52.25,
-      lng: 20.9,
-      zoom: 10,
-      isMapInit: false
-    };
-  }
-
-  saveMap = (map: any) => {
-    //@ts-ignore
-    this.map = map;
-    this.setState({
-      isMapInit: true
-    });
-  };
-
-  render() {
-    const { lat, lng, zoom } = this.state;
-    const position: [any, any] = [lat, lng];
-
-    return (
-      <Map style={{ color: 'black', width: '100%', paddingTop: '50%' }} center={position} zoom={zoom} ref={this.saveMap}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+const MapComponent = ({ origin, destination }: RouteProps) => {
+  return (
+    <MapContainer
+      style={{ color: 'black', width: '100%', paddingTop: '50%' }}
+      doubleClickZoom={false}
+      id="mapId"
+      zoom={14}
+      center={[33.5024, 36.2988]}
+    >
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      />
+      {origin && destination &&
+        <RoutingMachine
+          origin={origin}
+          destination={destination}
         />
-        {this.state.isMapInit &&
-          <Routing
-            origin={this.props.origin}
-            destination={this.props.destination}
-            /* @ts-ignore */
-            map={this.map}
-          />
-        }
-      </Map>
-    );
-  }
-}
+      }
+    </MapContainer>
+  );
+};
 
 export default MapComponent;
