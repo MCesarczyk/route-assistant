@@ -1,5 +1,5 @@
 import SearchForm from "../../components/SearchForm";
-import { Location } from "../../interfaces";
+import { Location } from "../../common/interfaces";
 
 interface HomeProps {
   origin: Location | undefined,

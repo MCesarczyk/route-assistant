@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FOOTER_HEIGHT, HEADER_HEIGHT } from "../../assets/variables";
+import { FOOTER_HEIGHT, HEADER_HEIGHT } from "../../common/variables";
 
 export const Header = styled.header`
   width: 100%;

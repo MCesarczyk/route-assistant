@@ -1,4 +1,4 @@
-import { Position } from "../interfaces";
+import { Position } from "../common/interfaces";
 import { buildGetRouteUrl } from "./buildGetRouteUrl";
 
 export const getRoute = async (origin: Position, destination: Position) => {

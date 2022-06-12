@@ -1,4 +1,4 @@
-import { SEARCH_RESULTS_NUMBER } from "../assets/variables";
+import { SEARCH_RESULTS_NUMBER } from "../common/variables";
 import { buildGeocodeUrl } from "./buildGeocodeUrl";
 
 export const getGeocode = async (query: string) => {

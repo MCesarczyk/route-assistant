@@ -5,7 +5,7 @@ import Input from "../Input";
 import Dropdown from "./Dropdown";
 import { Space } from "../Space/styled";
 import { SearchFormWrapper, StyledForm } from "./styled";
-import { Location } from "../../interfaces";
+import { Location } from "../../common/interfaces";
 
 interface SearchFormProps {
   label: string,

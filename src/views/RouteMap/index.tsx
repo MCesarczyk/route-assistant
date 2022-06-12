@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import MapComponent from "../../components/Map/MapComponent";
-import { Position } from "../../interfaces";
+import { Position, RouteProps } from "../../common/interfaces";
 import { getRoute } from "../../utils/getRoute";
-
-interface RouteProps {
-  origin: Position | undefined,
-  destination: Position | undefined
-}
 
 const RouteMap = ({ origin, destination }: RouteProps) => {
   useEffect(() => console.log(origin), [origin]);
