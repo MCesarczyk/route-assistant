@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Map from "../../components/Map";
+import MapComponent from "../../components/Map/MapComponent";
 import { Position } from "../../interfaces";
 import { getRoute } from "../../utils/getRoute";
 
@@ -29,7 +29,7 @@ const RouteMap = ({ origin, destination }: RouteProps) => {
   return (
     <>
       <h2>Route map</h2>
-      <Map
+      <MapComponent
         origin={origin}
         destination={destination}
       />
