@@ -11,4 +11,6 @@ export interface Location {
 export interface RouteProps {
   origin: Position | undefined,
   destination: Position | undefined
+  setDistance: (distance: number) => void
+  setTime: (time: number) => void
 }

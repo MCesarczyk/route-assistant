@@ -4,7 +4,7 @@ import "leaflet-routing-machine";
 
 const createRoutingMachineLayer = (props: any) => {
   // @ts-ignore
-  const instance = L.Routing.control({
+  const routeControl = L.Routing.control({
     waypoints: [
       L.latLng(props.origin.lat, props.origin.lng),
       L.latLng(props.destination.lat, props.destination.lng)
@@ -19,10 +19,18 @@ const createRoutingMachineLayer = (props: any) => {
     draggableWaypoints: false,
     fitSelectedRoutes: true,
     showAlternatives: false,
-    createMarker: function() { return null; }
+    createMarker: () => null
   });
 
-  return instance;
+  routeControl.on('routesfound', (e: any) => {
+    const routes = e.routes;
+    const summary = routes[0].summary;
+
+    props.setDistance(summary.totalDistance);
+    props.setTime(summary.totalTime);
+  });
+
+  return routeControl;
 };
 
 const RoutingMachine = createControlComponent(createRoutingMachineLayer);

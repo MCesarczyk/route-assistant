@@ -12,10 +12,9 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [origin, setOrigin] = useState<Location | undefined>(undefined);
   const [destination, setDestination] = useState<Location | undefined>(undefined);
+  const [distance, setDistance] = useState<number | undefined>(undefined);
+  const [time, setTime] = useState<number | undefined>(undefined);
   const navigate = useNavigate();
-
-  useEffect(() => console.log(origin), [origin]);
-  useEffect(() => console.log(destination), [destination]);
 
   useEffect(() => navigate(pages[page - 1]), [page]);
 
@@ -38,10 +37,19 @@ const App = () => {
             <RouteMap
               origin={origin?.position}
               destination={destination?.position}
+              setDistance={setDistance}
+              setTime={setTime}
             />
           } />
           <Route path="calculation" element={
-            <h2>calculation</h2>
+            <>
+              <h2>calculation</h2>
+              <p>
+                {`Total distance is ${distance && distance / 1000} km \
+                and total time is ${time && Math.floor(time / 3600)} hours \
+                and ${time && Math.round(time % 3600 / 60)} minutes`}
+              </p>
+            </>
           } />
           <Route path="summary" element={
             <h2>summary</h2>
