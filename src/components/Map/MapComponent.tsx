@@ -1,5 +1,6 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import { RouteProps } from "../../common/interfaces";
+import RouteMarkers from "./RouteMarkers";
 import RoutingMachine from "./RoutingMachine";
 
 const MapComponent = ({ origin, destination }: RouteProps) => {
@@ -16,10 +17,16 @@ const MapComponent = ({ origin, destination }: RouteProps) => {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       {origin && destination &&
-        <RoutingMachine
-          origin={origin}
-          destination={destination}
-        />
+        <>
+          <RoutingMachine
+            origin={origin}
+            destination={destination}
+          />
+          <RouteMarkers
+            origin={origin}
+            destination={destination}
+          />
+        </>
       }
     </MapContainer>
   );
