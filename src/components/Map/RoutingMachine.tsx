@@ -16,9 +16,10 @@ const createRoutingMachineLayer = (props: any) => {
     collapsible: true,
     addWaypoints: false,
     routeWhileDragging: true,
-    draggableWaypoints: true,
+    draggableWaypoints: false,
     fitSelectedRoutes: true,
-    showAlternatives: false
+    showAlternatives: false,
+    createMarker: function() { return null; }
   });
 
   return instance;
