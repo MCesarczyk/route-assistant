@@ -5,7 +5,7 @@
   "homepage": "https://mcesarczyk.github.io/route-assistant",
   "dependencies": {
     "@react-leaflet/core": "^2.0.0",
-    "@reduxjs/toolkit": "^1.8.1",
+    "@reduxjs/toolkit": "^1.8.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",

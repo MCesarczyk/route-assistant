@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { Footer, Header, Main, Wrapper } from './components/Layout/styled';
 import Headline from './components/Headline';
@@ -7,6 +7,7 @@ import Navigation from './components/Navigation';
 import RouteMap from './views/RouteMap';
 import { Location } from './common/interfaces';
 import { pages } from './common/pages';
+import Calculation from './views/Calculation';
 
 const App = () => {
   const [page, setPage] = useState(1);
@@ -14,7 +15,17 @@ const App = () => {
   const [destination, setDestination] = useState<Location | undefined>(undefined);
   const [distance, setDistance] = useState<number | undefined>(undefined);
   const [time, setTime] = useState<number | undefined>(undefined);
+  const [fuelPrice, setFuelPrice] = useState<string>('');
+  const [currency, setCurrency] = useState<string>('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(fuelPrice);
+  }, [fuelPrice]);
+
+  useEffect(() => {
+    console.log(currency);
+  }, [currency]);
 
   useEffect(() => navigate(pages[page - 1]), [page]);
 
@@ -42,14 +53,14 @@ const App = () => {
             />
           } />
           <Route path="calculation" element={
-            <>
-              <h2>calculation</h2>
-              <p>
-                {`Total distance is ${distance && distance / 1000} km \
-                and total time is ${time && Math.floor(time / 3600)} hours \
-                and ${time && Math.round(time % 3600 / 60)} minutes`}
-              </p>
-            </>
+            <Calculation
+              time={time}
+              distance={distance}
+              fuelPrice={fuelPrice}
+              setFuelPrice={setFuelPrice}
+              currency={currency}
+              setCurrency={setCurrency}
+            />
           } />
           <Route path="summary" element={
             <h2>summary</h2>

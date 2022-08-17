@@ -1,16 +1,24 @@
 import { StyledInput } from "./styled";
 
-type inputProps = {
+interface inputProps {
   value: string,
-  setValue: Function,
-  placeholder?: string | undefined
+  setValue: (value:string) => void,
+  placeholder?: string | undefined,
+  type?: string,
+  step?: number,
+  min?: number,
+  max?: number
 }
 
-const Input = ({ value, setValue, placeholder }: inputProps) => (
+const Input = ({ value, setValue, placeholder, type, step, min, max }: inputProps) => (
   <StyledInput
     aria-label="input"
     data-testid="input"
     value={value}
+    type={type}
+    step={step}
+    min={min}
+    max={max}
     placeholder={placeholder}
     onChange={(e: { target: HTMLInputElement }) => setValue(e.target.value)}
     minLength={0}
