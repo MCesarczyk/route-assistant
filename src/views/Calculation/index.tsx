@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
 
@@ -7,14 +7,15 @@ interface CalculationProps {
   distance?: number,
   fuelPrice: string,
   setFuelPrice: (value: string) => void,
+  currency: string,
+  setCurrency: (value: string) => void,
   currencyRate: number,
   setCurrencyRate: (value: number) => void
 };
 
 const currencyOptions = ['EUR', 'USD', 'AUD', 'PLN'];
 
-const Calculation = ({ time, distance, fuelPrice, setFuelPrice, currencyRate, setCurrencyRate }: CalculationProps) => {
-  const [currency, setCurrency] = useState('EUR');
+const Calculation = ({ time, distance, fuelPrice, setFuelPrice, currency, setCurrency, currencyRate, setCurrencyRate }: CalculationProps) => {
 
   const handleCurrencyChange = () => {
     switch (currency) {
@@ -72,7 +73,7 @@ const Calculation = ({ time, distance, fuelPrice, setFuelPrice, currencyRate, se
           </legend>
           <Select
             options={currencyOptions}
-            value={String(currencyRate)}
+            value={currency}
             setValue={setCurrency}
           />
         </fieldset>

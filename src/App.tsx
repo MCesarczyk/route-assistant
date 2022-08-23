@@ -17,6 +17,7 @@ const App = () => {
   const [distance, setDistance] = useState<number | undefined>(undefined);
   const [time, setTime] = useState<number | undefined>(undefined);
   const [fuelPrice, setFuelPrice] = useState<string>('');
+  const [currency, setCurrency] = useState('EUR');
   const [currencyRate, setCurrencyRate] = useState<number>(4.8);
   const navigate = useNavigate();
 
@@ -51,6 +52,8 @@ const App = () => {
               distance={distance}
               fuelPrice={fuelPrice}
               setFuelPrice={setFuelPrice}
+              currency={currency}
+              setCurrency={setCurrency}
               currencyRate={currencyRate}
               setCurrencyRate={setCurrencyRate}
             />
@@ -60,6 +63,7 @@ const App = () => {
               time={time}
               distance={distance}
               fuelPrice={fuelPrice}
+              currency={currency}
               currencyRate={currencyRate}
             />
           } />
