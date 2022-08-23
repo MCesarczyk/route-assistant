@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
 
@@ -6,13 +7,41 @@ interface CalculationProps {
   distance?: number,
   fuelPrice: string,
   setFuelPrice: (value: string) => void,
-  currency: string,
-  setCurrency: (value: string) => void
+  currencyRate: number,
+  setCurrencyRate: (value: number) => void
 };
 
-const currencyOptions = ['EUR', 'USD', 'CAD', 'PLN'];
+const currencyOptions = ['EUR', 'USD', 'AUD', 'PLN'];
 
-const Calculation = ({ time, distance, fuelPrice, setFuelPrice, currency, setCurrency }: CalculationProps) => {
+const Calculation = ({ time, distance, fuelPrice, setFuelPrice, currencyRate, setCurrencyRate }: CalculationProps) => {
+  const [currency, setCurrency] = useState('EUR');
+
+  const handleCurrencyChange = () => {
+    switch (currency) {
+      case 'EUR':
+        setCurrencyRate(4.8);
+        break;
+
+      case 'USD':
+        setCurrencyRate(4.5);
+        break;
+
+      case 'AUD':
+        setCurrencyRate(3.6);
+        break;
+
+      case 'PLN':
+        setCurrencyRate(1);
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    handleCurrencyChange();
+  }, [currency])
 
   return (
     <>
@@ -43,7 +72,7 @@ const Calculation = ({ time, distance, fuelPrice, setFuelPrice, currency, setCur
           </legend>
           <Select
             options={currencyOptions}
-            value={currency}
+            value={String(currencyRate)}
             setValue={setCurrency}
           />
         </fieldset>

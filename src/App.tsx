@@ -8,6 +8,7 @@ import RouteMap from './views/RouteMap';
 import { Location } from './common/interfaces';
 import { pages } from './common/pages';
 import Calculation from './views/Calculation';
+import Summary from './views/Summary';
 
 const App = () => {
   const [page, setPage] = useState(1);
@@ -16,7 +17,7 @@ const App = () => {
   const [distance, setDistance] = useState<number | undefined>(undefined);
   const [time, setTime] = useState<number | undefined>(undefined);
   const [fuelPrice, setFuelPrice] = useState<string>('');
-  const [currency, setCurrency] = useState<string>('');
+  const [currencyRate, setCurrencyRate] = useState<number>(4.8);
   const navigate = useNavigate();
 
   useEffect(() => navigate(pages[page - 1]), [page, navigate]);
@@ -50,12 +51,17 @@ const App = () => {
               distance={distance}
               fuelPrice={fuelPrice}
               setFuelPrice={setFuelPrice}
-              currency={currency}
-              setCurrency={setCurrency}
+              currencyRate={currencyRate}
+              setCurrencyRate={setCurrencyRate}
             />
           } />
           <Route path="summary" element={
-            <h2>summary</h2>
+            <Summary
+              time={time}
+              distance={distance}
+              fuelPrice={fuelPrice}
+              currencyRate={currencyRate}
+            />
           } />
         </Routes>
       </Main>
