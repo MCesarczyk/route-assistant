@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { Footer, Header, Main, Wrapper } from './components/Layout/styled';
 import Headline from './components/Headline';
@@ -19,15 +19,7 @@ const App = () => {
   const [currency, setCurrency] = useState<string>('');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log(fuelPrice);
-  }, [fuelPrice]);
-
-  useEffect(() => {
-    console.log(currency);
-  }, [currency]);
-
-  useEffect(() => navigate(pages[page - 1]), [page]);
+  useEffect(() => navigate(pages[page - 1]), [page, navigate]);
 
   return (
     <Wrapper>
