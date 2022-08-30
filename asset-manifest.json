@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/route-assistant/static/js/main.07899b80.js",
+    "main.js": "/route-assistant/static/js/main.5341d038.js",
     "static/js/787.3aa343f2.chunk.js": "/route-assistant/static/js/787.3aa343f2.chunk.js",
     "index.html": "/route-assistant/index.html",
-    "main.07899b80.js.map": "/route-assistant/static/js/main.07899b80.js.map",
+    "main.5341d038.js.map": "/route-assistant/static/js/main.5341d038.js.map",
     "787.3aa343f2.chunk.js.map": "/route-assistant/static/js/787.3aa343f2.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.07899b80.js"
+    "static/js/main.5341d038.js"
   ]
 }
