@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { PDFViewer } from "@react-pdf/renderer";
+
+import Report from "./Report";
 
 interface SummaryProps {
   time?: number,
@@ -29,11 +32,9 @@ const Summary = ({ time, distance, fuelPrice, currency, currencyRate }: SummaryP
   }, [])
 
   return (
-    <>
-      <h2>summary</h2>
-      <p>{summary}</p>
-      <p style={{fontSize: '0.65em'}}>{"*) Assumed 8h of driving a day."}</p>
-    </>
+    <PDFViewer style={{ width: '100%', height: '80vh' }}>
+      <Report summary={summary} />
+    </PDFViewer>
   );
 };
 
