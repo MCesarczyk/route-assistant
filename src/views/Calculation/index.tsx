@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
 
@@ -17,7 +17,7 @@ const currencyOptions = ['EUR', 'USD', 'AUD', 'PLN'];
 
 const Calculation = ({ time, distance, fuelPrice, setFuelPrice, currency, setCurrency, currencyRate, setCurrencyRate }: CalculationProps) => {
 
-  const handleCurrencyChange = () => {
+  const handleCurrencyChange = useCallback(() => {
     switch (currency) {
       case 'EUR':
         setCurrencyRate(4.8);
@@ -38,11 +38,11 @@ const Calculation = ({ time, distance, fuelPrice, setFuelPrice, currency, setCur
       default:
         break;
     }
-  };
+  }, [currency, setCurrencyRate]);
 
   useEffect(() => {
     handleCurrencyChange();
-  }, [currency])
+  }, [currency, handleCurrencyChange])
 
   return (
     <>

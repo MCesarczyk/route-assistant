@@ -27,7 +27,7 @@ const SearchForm = ({ label, placeholder, result, setResult }: SearchFormProps) 
     if (result) {
       setQuery(result.title)
     }
-  }, []);
+  }, [result]);
 
   const handleSearch = async (e: any) => {
     e.preventDefault();

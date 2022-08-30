@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { PDFViewer } from "@react-pdf/renderer";
 
 import Report from "./Report";
@@ -14,7 +14,7 @@ interface SummaryProps {
 const Summary = ({ time, distance, fuelPrice, currency, currencyRate }: SummaryProps) => {
   const [summary, setSummary] = useState('');
 
-  const buildSummary = () => {
+  const buildSummary = useCallback(() => {
     if (distance && fuelPrice && time) {
       const totalCost = (distance / 100000) * Number(fuelPrice) / currencyRate;
 
@@ -25,11 +25,11 @@ const Summary = ({ time, distance, fuelPrice, currency, currencyRate }: SummaryP
         Estimated time of the trip: ${estimatedTime} days*.`
       );
     }
-  };
+  }, [currency, currencyRate, distance, fuelPrice, time]);
 
   useEffect(() => {
     buildSummary();
-  }, [])
+  }, [buildSummary])
 
   return (
     <PDFViewer style={{ width: '100%', height: '80vh' }}>

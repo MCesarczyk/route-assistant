@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import MapComponent from "../../components/Map/MapComponent";
 import { RouteProps } from "../../common/interfaces";
 import { getRoute } from "../../utils/getRoute";
@@ -7,16 +7,16 @@ const RouteMap = ({ origin, destination, setDistance, setTime }: RouteProps) => 
   const [route, setRoute] = useState({});
   useEffect(() => console.log(route), [route]);
 
-  const fetchRoute = async () => {
+  const fetchRoute = useCallback(async () => {
     if (origin && destination) {
       const data: any = await getRoute(origin, destination);
       setRoute(data.routes[0]);
     }
-  };
+  }, [destination, origin]);
 
   useEffect(() => {
     fetchRoute();
-  }, []);
+  }, [fetchRoute]);
 
   return (
     <>
