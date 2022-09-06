@@ -3,7 +3,7 @@ import MapComponent from "../../components/Map/MapComponent";
 import { RouteProps } from "../../common/interfaces";
 import { getRoute } from "../../utils/getRoute";
 
-const RouteMap = ({ origin, destination, setDistance, setTime }: RouteProps) => {
+const RouteMap = ({ origin, destination, setRouteData }: RouteProps) => {
   const [route, setRoute] = useState({});
   useEffect(() => console.log(route), [route]);
 
@@ -24,8 +24,7 @@ const RouteMap = ({ origin, destination, setDistance, setTime }: RouteProps) => 
       <MapComponent
         origin={origin}
         destination={destination}
-        setDistance={setDistance}
-        setTime={setTime}
+        setRouteData={setRouteData}
       />
     </>
   );

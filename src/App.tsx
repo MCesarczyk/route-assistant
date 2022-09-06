@@ -5,23 +5,27 @@ import Headline from './components/Headline';
 import Home from './views/Home';
 import Navigation from './components/Navigation';
 import RouteMap from './views/RouteMap';
-import { Location } from './common/interfaces';
+import { IRouteData, Location } from './common/interfaces';
 import { pages } from './common/pages';
 import Calculation from './views/Calculation';
 import Summary from './views/Summary';
+import { exampleDestination, exampleOrigin } from './assets/fixtures';
 
 const App = () => {
   const [page, setPage] = useState(1);
-  const [origin, setOrigin] = useState<Location | undefined>(undefined);
-  const [destination, setDestination] = useState<Location | undefined>(undefined);
-  const [distance, setDistance] = useState<number | undefined>(undefined);
-  const [time, setTime] = useState<number | undefined>(undefined);
-  const [fuelPrice, setFuelPrice] = useState<string>('');
-  const [currency, setCurrency] = useState('EUR');
+  const [origin, setOrigin] = useState<Location | undefined>(exampleOrigin);
+  const [destination, setDestination] = useState<Location | undefined>(exampleDestination);
+  const [routeData, setRouteData] = useState<IRouteData | undefined>(undefined);
+  const [fuelPrice, setFuelPrice] = useState<string>('6.50');
+  const [currency, setCurrency] = useState('PLN');
   const [currencyRate, setCurrencyRate] = useState<number>(4.8);
   const navigate = useNavigate();
 
   useEffect(() => navigate(pages[page - 1]), [page, navigate]);
+
+  useEffect(() => {
+    console.log(routeData);
+  }, [routeData]);
 
   return (
     <Wrapper>
@@ -42,14 +46,13 @@ const App = () => {
             <RouteMap
               origin={origin?.position}
               destination={destination?.position}
-              setDistance={setDistance}
-              setTime={setTime}
+              setRouteData={setRouteData}
             />
           } />
           <Route path="calculation" element={
             <Calculation
-              time={time}
-              distance={distance}
+              time={routeData?.summary.totalTime}
+              distance={routeData?.summary.totalDistance}
               fuelPrice={fuelPrice}
               setFuelPrice={setFuelPrice}
               currency={currency}
@@ -60,8 +63,8 @@ const App = () => {
           } />
           <Route path="summary" element={
             <Summary
-              time={time}
-              distance={distance}
+              time={routeData?.summary.totalTime}
+              distance={routeData?.summary.totalDistance}
               fuelPrice={fuelPrice}
               currency={currency}
               currencyRate={currencyRate}

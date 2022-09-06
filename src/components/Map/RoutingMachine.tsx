@@ -24,10 +24,12 @@ const createRoutingMachineLayer = (props: any) => {
 
   routeControl.on('routesfound', (e: any) => {
     const routes = e.routes;
-    const summary = routes[0].summary;
 
-    props.setDistance(summary.totalDistance);
-    props.setTime(summary.totalTime);
+    props.setRouteData({
+      name: routes[0].name,
+      summary: routes[0].summary,
+      instructions: routes[0].instructions
+    })
   });
 
   return routeControl;

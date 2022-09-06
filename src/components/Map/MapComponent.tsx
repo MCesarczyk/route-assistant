@@ -3,7 +3,7 @@ import { RouteProps } from "../../common/interfaces";
 import RouteMarkers from "./RouteMarkers";
 import RoutingMachine from "./RoutingMachine";
 
-const MapComponent = ({ origin, destination, setDistance, setTime }: RouteProps) => {
+const MapComponent = ({ origin, destination, setRouteData }: RouteProps) => {
   return (
     <MapContainer
       style={{ color: 'black', width: '100%', paddingTop: '50%' }}
@@ -21,8 +21,7 @@ const MapComponent = ({ origin, destination, setDistance, setTime }: RouteProps)
           <RoutingMachine
             origin={origin}
             destination={destination}
-            setDistance={setDistance}
-            setTime={setTime}
+            setRouteData={setRouteData}
           />
           <RouteMarkers
             origin={origin}
