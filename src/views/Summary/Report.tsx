@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
   image: {
     marginVertical: 15,
-    marginHorizontal: 100,
+    marginHorizontal: 50,
   },
   header: {
     fontSize: 12,
@@ -63,13 +63,13 @@ const Report = ({ summary }: ReportProps) => (
       <Text style={styles.subtitle}>
         {summary}
       </Text>
+      <Image
+        style={styles.image}
+        src="https://image.shutterstock.com/image-photo/tiny-floating-house-on-lake-600w-1980476267.jpg"
+      />
       <Text style={styles.text}>
         {"*) Assumed 8h of driving a day."}
       </Text>
-      <Image
-        style={styles.image}
-        src="/assets/demo.jpg"
-      />
       <Text style={styles.pageNumber} render={({ pageNumber, totalPages }: any) => (
         `${pageNumber} / ${totalPages}`
       )} fixed />
