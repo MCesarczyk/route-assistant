@@ -14,22 +14,22 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 12,
     textAlign: 'center',
-    marginBottom: 40,
+    marginBottom: 24,
   },
   text: {
     fontSize: 14,
     textAlign: 'justify',
-    fontFamily: 'Oswald',
+    fontFamily: 'Roboto-ttf',
   },
   largerText: {
     fontSize: 16,
-    textAlign: 'justify',
-    fontFamily: 'Oswald',
+    textAlign: 'center',
+    fontFamily: 'Roboto-ttf',
   },
   annotation: {
     fontSize: 10,
-    textAlign: 'justify',
-    marginTop: 20,
+    textAlign: 'Roboto-thin',
+    margin: 20,
   },
   image: {
     marginVertical: 15,
@@ -69,8 +69,10 @@ const Report = ({ summary }: ReportProps) => (
       <Text style={styles.header} fixed>~ Created with Route-Assistant ~</Text>
       <Text style={styles.title}>Summary of your journey</Text>
       <Text style={styles.subtitle}>Brief information</Text>
-      <Text style={styles.text}>From: {summary?.origin} To: {summary?.destination} via: {summary?.routeName}</Text>.
-      <Text style={styles.largerText}>Overall cost of the gas: {summary?.totalCost}. Estimated time of the trip: {summary?.estimatedTime} days</Text>
+      <Text style={styles.largerText}>From: {summary?.origin}</Text>
+      <Text style={styles.largerText}>To: {summary?.destination}</Text>
+      <Text style={styles.largerText}>via: {summary?.routeName}</Text>
+      <Text style={styles.largerText}>Overall cost of the gas: {summary?.totalCost}. Estimated time of the trip: {summary?.estimatedTime}</Text>
       <Text style={styles.annotation}>{"*) Assumed 8h of driving a day."}</Text>
       <Image
         style={styles.image}
@@ -86,7 +88,20 @@ const Report = ({ summary }: ReportProps) => (
 
 Font.register({
   family: 'Oswald',
-  src: 'https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf'
+  src: 'https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf',
+});
+Font.register({
+  family: 'Roboto-thin',
+  src: "http://themes.googleusercontent.com/static/fonts/roboto/v9/vzIUHo9z-oJ4WgkpPOtg1_esZW2xOQ-xsNqO47m55DA.woff",
+});
+Font.register({
+  family: 'Roboto',
+  src: "http://themes.googleusercontent.com/static/fonts/roboto/v9/2UX7WLTfW3W8TclTUvlFyQ.woff",
+});
+Font.register({
+  family: "Roboto-ttf",
+  src:
+    "https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-light-webfont.ttf"
 });
 
 export default Report;

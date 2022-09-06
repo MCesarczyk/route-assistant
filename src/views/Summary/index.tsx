@@ -22,7 +22,8 @@ const Summary = ({ origin, destination, routeData, fuelPrice, currency, currency
     if (distance && fuelPrice && time) {
       const totalCost = (distance / 100000) * Number(fuelPrice) / currencyRate;
 
-      const estimatedTime = Math.ceil(time / 3600 / 8);
+      const travelTime = Math.ceil(time / 3600 / 8);
+      const estimatedTime = `${travelTime} day${travelTime === 1 ? '' : 's'}`;
 
       setSummary({
         origin: origin,
