@@ -63,8 +63,9 @@ const App = () => {
           } />
           <Route path="summary" element={
             <Summary
-              time={routeData?.summary.totalTime}
-              distance={routeData?.summary.totalDistance}
+              origin={origin?.title}
+              destination={destination?.title}
+              routeData={routeData}
               fuelPrice={fuelPrice}
               currency={currency}
               currencyRate={currencyRate}

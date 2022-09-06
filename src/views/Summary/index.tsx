@@ -1,18 +1,22 @@
 import { useCallback, useEffect, useState } from "react";
 import { PDFViewer } from "@react-pdf/renderer";
 
+import { IRouteData } from "../../common/interfaces";
 import Report from "./Report";
 
 interface SummaryProps {
-  time?: number,
-  distance?: number,
-  fuelPrice: string,
-  currency: string,
-  currencyRate: number
+  origin?: string;
+  destination?: string;
+  routeData?: IRouteData;
+  fuelPrice: string;
+  currency: string;
+  currencyRate: number;
 };
 
-const Summary = ({ time, distance, fuelPrice, currency, currencyRate }: SummaryProps) => {
-  const [summary, setSummary] = useState('');
+const Summary = ({ origin, destination, routeData, fuelPrice, currency, currencyRate }: SummaryProps) => {
+  const time = routeData?.summary.totalTime;
+  const distance = routeData?.summary.totalDistance;
+  const [summary, setSummary] = useState<any>();
 
   const buildSummary = useCallback(() => {
     if (distance && fuelPrice && time) {
@@ -20,10 +24,18 @@ const Summary = ({ time, distance, fuelPrice, currency, currencyRate }: SummaryP
 
       const estimatedTime = Math.ceil(time / 3600 / 8);
 
-      setSummary(
-        `Overall cost of the gas: ${(totalCost).toFixed(2)} ${currency}. \
-        Estimated time of the trip: ${estimatedTime} days*.`
-      );
+      setSummary({
+        origin: origin,
+        destination: destination,
+        routeName: routeData.name,
+        totalCost: `${totalCost.toFixed(2)} ${currency}`,
+        estimatedTime: estimatedTime,
+        instructions: routeData.instructions.map(
+          (item, index) =>
+            `${index + 1}. ${item.text} - ${item.distance}km
+            `
+        )
+      });
     }
   }, [currency, currencyRate, distance, fuelPrice, time]);
 

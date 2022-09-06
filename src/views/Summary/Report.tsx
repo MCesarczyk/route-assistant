@@ -9,23 +9,27 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     textAlign: 'center',
-    fontFamily: 'Oswald'
+    fontFamily: 'Oswald',
   },
-  author: {
+  subtitle: {
     fontSize: 12,
     textAlign: 'center',
     marginBottom: 40,
   },
-  subtitle: {
-    fontSize: 18,
-    margin: 12,
-    fontFamily: 'Oswald'
-  },
   text: {
-    margin: 12,
     fontSize: 14,
     textAlign: 'justify',
-    fontFamily: 'Times-Roman'
+    fontFamily: 'Oswald',
+  },
+  largerText: {
+    fontSize: 16,
+    textAlign: 'justify',
+    fontFamily: 'Oswald',
+  },
+  annotation: {
+    fontSize: 10,
+    textAlign: 'justify',
+    marginTop: 20,
   },
   image: {
     marginVertical: 15,
@@ -49,27 +53,30 @@ const styles = StyleSheet.create({
 });
 
 interface ReportProps {
-  summary: string
+  summary: {
+    origin: string;
+    destination: string;
+    routeName: string;
+    totalCost: string;
+    estimatedTime: string;
+    instructions: string[];
+  }
 };
 
 const Report = ({ summary }: ReportProps) => (
   <Document>
     <Page style={styles.body}>
-      <Text style={styles.header} fixed>
-        ~ Created with Route-Assistant ~
-      </Text>
+      <Text style={styles.header} fixed>~ Created with Route-Assistant ~</Text>
       <Text style={styles.title}>Summary of your journey</Text>
-      <Text style={styles.author}>Brief information</Text>
-      <Text style={styles.subtitle}>
-        {summary}
-      </Text>
+      <Text style={styles.subtitle}>Brief information</Text>
+      <Text style={styles.text}>From: {summary?.origin} To: {summary?.destination} via: {summary?.routeName}</Text>.
+      <Text style={styles.largerText}>Overall cost of the gas: {summary?.totalCost}. Estimated time of the trip: {summary?.estimatedTime} days</Text>
+      <Text style={styles.annotation}>{"*) Assumed 8h of driving a day."}</Text>
       <Image
         style={styles.image}
         src="https://image.shutterstock.com/image-photo/tiny-floating-house-on-lake-600w-1980476267.jpg"
       />
-      <Text style={styles.text}>
-        {"*) Assumed 8h of driving a day."}
-      </Text>
+      <Text style={styles.text}>{summary?.instructions}</Text>
       <Text style={styles.pageNumber} render={({ pageNumber, totalPages }: any) => (
         `${pageNumber} / ${totalPages}`
       )} fixed />
